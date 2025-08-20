@@ -7,7 +7,7 @@ import groq
 import os
 
 # --- UI CONFIG & STYLE ---
-st.set_page_config(page_title="DigiTwin RAG Forecast", layout="wide")
+st.set_page_config(page_title="Med RAG Expert", layout="wide")
 
 st.markdown("""
     <style>
@@ -43,7 +43,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("📊 DigiTwin - The Insp Nerdzx")
+st.title("📊 MedTwin - The Expert")
 
 # --- AVATARS ---
 USER_AVATAR = "https://raw.githubusercontent.com/achilela/vila_fofoka_analysis/9904d9a0d445ab0488cf7395cb863cce7621d897/USER_AVATAR.png"
@@ -64,7 +64,7 @@ else:
 @st.cache_resource
 def load_model():
     model_dir = snapshot_download(repo_id="Chinwendu/lung_ct_detection_model")
-    return tf.keras.models.load_model(model_dir)
+    return tf.keras.layers.TFSMLayer(model_dir, call_endpoint='serving_default')
 
 model = load_model()
 
@@ -80,7 +80,12 @@ if uploaded_file is not None:
     img_array = np.expand_dims(img_array, axis=0)
     
     # Make prediction
-    prediction = model.predict(img_array)
+    output = model(img_array)
+    if isinstance(output, dict):
+        # If output is a dict, assume the key for predictions (e.g., 'dense' or 'output_0' - adjust based on model)
+        prediction = list(output.values())[0].numpy()
+    else:
+        prediction = output.numpy()
     class_names = ['Benign', 'Malignant', 'Normal']
     predicted_class = class_names[np.argmax(prediction)]
     
