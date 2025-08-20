@@ -1,5 +1,5 @@
 import streamlit as st
-from huggingface_hub import hf_hub_download
+from huggingface_hub import snapshot_download
 import tensorflow as tf
 from PIL import Image
 import numpy as np
@@ -43,7 +43,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("📊 MedLungs - Expert CT Scanner")
+st.title("📊 DigiTwin - The Insp Nerdzx")
 
 # --- AVATARS ---
 USER_AVATAR = "https://raw.githubusercontent.com/achilela/vila_fofoka_analysis/9904d9a0d445ab0488cf7395cb863cce7621d897/USER_AVATAR.png"
@@ -63,8 +63,8 @@ else:
 # Load the pre-trained model from Hugging Face
 @st.cache_resource
 def load_model():
-    model_path = hf_hub_download(repo_id="Chinwendu/lung_ct_detection_model", filename="model.h5")
-    return tf.keras.models.load_model(model_path)
+    model_dir = snapshot_download(repo_id="Chinwendu/lung_ct_detection_model")
+    return tf.keras.models.load_model(model_dir)
 
 model = load_model()
 
