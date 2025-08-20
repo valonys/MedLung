@@ -22,3 +22,29 @@ The application requires Python 3.8+ and the following libraries (listed in `req
 
 ## Installation
 1. Clone the repository:
+
+The app will open in your default web browser.
+
+## Usage
+1. **Upload Image:** Use the sidebar to upload a CT scan image (JPG, PNG, JPEG).
+2. **View Prediction:** The app will display the image and predict if it's Benign, Malignant, or Normal.
+3. **Chat Interface:** Ask questions about the scan or prediction in the chat input. The AI assistant will respond based on the prediction.
+4. **Powered By:** Footer credits to MedLung Intelli Systems, Your saying, and ValonyLabs.
+
+## Model Details
+- **Prediction Model:** Loaded from Hugging Face repo `Chinwendu/lung_ct_detection_model`.
+- **Chat Model:** Uses Groq's `llama-3.1-8b-instant` model for responses.
+
+## Limitations
+- The prediction model is pre-trained and may not be 100% accurate.
+- Chat responses are AI-generated and should not replace professional medical advice.
+- No internet access for additional package installations in the code interpreter tool (if used in extensions).
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+This project is licensed under the MIT License.
+
+## Contact
+For questions, contact ValonyLabs at [www.valonylabs.com](https://www.valonylabs.com).
