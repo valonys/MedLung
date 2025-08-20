@@ -43,7 +43,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("📊 DigiTwin - The Insp Nerdzx")
+st.title("📊 MedLungs - Expert CT Scanner")
 
 # --- AVATARS ---
 USER_AVATAR = "https://raw.githubusercontent.com/achilela/vila_fofoka_analysis/9904d9a0d445ab0488cf7395cb863cce7621d897/USER_AVATAR.png"
