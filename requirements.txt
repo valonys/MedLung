@@ -1,0 +1,6 @@
+streamlit
+huggingface_hub
+tensorflow
+Pillow
+numpy
+groq
